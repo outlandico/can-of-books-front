@@ -12,7 +12,7 @@ function App() {
 
   async function getBooks() {
     try {
-      const response = await axios.get('https://can-of-books-backend-13lx.onrender.com/books');
+      const response = await axios.get('/books');
       setBooks(response.data);
     } catch (error) {
       console.error('Error fetching books:', error);
@@ -21,7 +21,7 @@ function App() {
 
   async function deleteBook(id) {
     try {
-      await axios.delete(`https://can-of-books-backend-13lx.onrender.com/books/${id}`);
+      await axios.delete(`http://localhost:3000/books/${id}`);
       setBooks(prevBooks => prevBooks.filter(book => book._id !== id));
     } catch (error) {
       console.error('Error deleting book:', error);
@@ -30,7 +30,7 @@ function App() {
 
   async function addBook(book) {
     try {
-      const response = await axios.post('https://can-of-books-backend-13lx.onrender.com/books', book);
+      const response = await axios.post('http://localhost:3000/books', book);
       const newBook = response.data;
       setBooks(prevBooks => [...prevBooks, newBook]);
     } catch (error) {
