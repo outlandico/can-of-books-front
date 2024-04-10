@@ -36,6 +36,7 @@ function Books(props) {
           <div key={book._id}>
             <h2>{book.title}</h2>
             <p>Description: {book.description}</p>
+            <p>Status: {book.status}</p> {/* Display the status here */}
             <button id={book._id} onClick={deleteTheBook}>Delete</button>
           </div>
         )}
