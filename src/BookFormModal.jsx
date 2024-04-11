@@ -9,22 +9,17 @@ function BookFormModal({ onSubmit, onClose }) {
 
   const handleSubmit = async () => {
     try {
-      // Send a POST request to the server's /books endpoint
       const response = await axios.post('https://can-of-books-backend-13lx.onrender.com/books', {
         title,
         description
       });
-      console.log('New book added:', response.data); // Log the new book data returned from the server
-      // Call the onSubmit prop with the new book data returned from the server
+      console.log('New book added:', response.data);
       onSubmit(response.data);
-      // Clear the input fields
       setTitle('');
       setDescription('');
-      // Close the modal
       onClose();
     } catch (error) {
       console.error('Error adding book:', error);
-      // You can handle errors here, e.g., display an error message to the user
     }
   };
 

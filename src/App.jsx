@@ -33,9 +33,9 @@ function App() {
   async function addBook(book) {
     console.log(book);
     // try {
-      const response = await axios.post('https://can-of-books-backend-13lx.onrender.com/books', book);
-      const newBook = response.data;
-      setBooks(prevBooks => [...prevBooks, newBook]);
+    const response = await axios.post('https://can-of-books-backend-13lx.onrender.com/books', book);
+    const newBook = response.data;
+    setBooks(prevBooks => [...prevBooks, newBook]);
     // } catch (error) {
     //   console.error('Error adding book:', error);
     // }

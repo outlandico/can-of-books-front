@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
-import BookFormModal from './BookFormModal'; // Import the BookFormModal component
+import BookFormModal from './BookFormModal';
 import EditBookForm from './EditBookForm';
 
 function Books(props) {
@@ -8,10 +8,10 @@ function Books(props) {
   const [showForm, setShowForm] = useState(false);
   const [editBook, setEditBook] = useState(null);
 
-  //function to handle edit book  
+  //function to handle edit book i think lets look back at this
   const handleEditBook = (book) => {
-    setEditBook(book); // Set the book to be edited
-    setShowForm(true); // Show the edit book form modal
+    setEditBook(book);
+    setShowForm(true);
   };
 
   async function deleteTheBook(event) {
@@ -31,10 +31,9 @@ function Books(props) {
     try {
       console.log(bookData);
       await props.handleAddBook(bookData);
-      setShowForm(false); // Close the modal after submitting the form
+      setShowForm(false);
     } catch (error) {
       console.error('Error adding book:', error);
-      // You can handle errors here, e.g., display an error message to the user
     }
   }
 
@@ -66,10 +65,10 @@ function Books(props) {
       {editBook && (
         <EditBookForm
           book={editBook}
-          onSubmit={handleSubmit} // Pass the same submit handler as adding a new book
+          onSubmit={handleSubmit}
           onClose={() => {
-            setShowForm(false); // Close the edit book form modal
-            setEditBook(null); // Clear the book being edited
+            setShowForm(false);
+            setEditBook(null);
           }}
         />
       )}

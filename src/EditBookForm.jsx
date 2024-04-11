@@ -1,4 +1,3 @@
-// EditBookForm.jsx
 import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
@@ -10,19 +9,15 @@ function EditBookForm({ book, onSubmit, onClose }) {
 
   const handleSubmit = async () => {
     try {
-      // Send a PUT request to update the book details
       const response = await axios.put(`https://can-of-books-backend-13lx.onrender.com/books/${book._id}`, {
         title,
         description
       });
-      console.log('Book updated:', response.data); // Log the updated book data returned from the server
-      // Call the onSubmit prop with the updated book data returned from the server
+      console.log('Book updated:', response.data);
       onSubmit(response.data);
-      // Close the modal
       onClose();
     } catch (error) {
       console.error('Error updating book:', error);
-      // You can handle errors here, e.g., display an error message to the user
     }
   };
 
