@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
+
+
 import Books from './Books.jsx';
 
 function App() {
@@ -29,13 +31,14 @@ function App() {
   }
 
   async function addBook(book) {
-    try {
+    console.log(book);
+    // try {
       const response = await axios.post('https://can-of-books-backend-13lx.onrender.com/books', book);
       const newBook = response.data;
       setBooks(prevBooks => [...prevBooks, newBook]);
-    } catch (error) {
-      console.error('Error adding book:', error);
-    }
+    // } catch (error) {
+    //   console.error('Error adding book:', error);
+    // }
   }
 
   return (
