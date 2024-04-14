@@ -37,12 +37,23 @@ function Books(props) {
     }
   }
 
+  // Function to delete all books
+  async function clearAllBooks() {
+    try {
+      await props.clearDatabase();
+    } catch (error) {
+      console.error('Error clearing all books:', error);
+    }
+  }
+
   return (
     <>
       <h2>Books</h2>
       <div className="mb-3">
         {/* Add Book button */}
         <button className="btn btn-primary" onClick={() => setShowForm(true)}>Add Book</button>
+        {/* Delete All Books button */}
+        <button className="btn btn-danger" onClick={clearAllBooks}>Delete All Books</button>
       </div>
       <Carousel>
         {props.books.map(book =>
@@ -51,9 +62,8 @@ function Books(props) {
             <Carousel.Caption>
               <h2>{book.title}</h2>
               <p>Description: {book.description}</p>
-              <p>Status: {book.status}</p> {/* Display the status here */}
+              <p>Status: {book.status}</p>
               <button id={book._id} onClick={deleteTheBook}>Delete</button>
-              {/* Add Edit button */}
               <button onClick={() => handleEditBook(book)}>Edit</button>
             </Carousel.Caption>
           </Carousel.Item>
@@ -75,6 +85,7 @@ function Books(props) {
     </>
   );
 }
+
 
 export default Books;
 

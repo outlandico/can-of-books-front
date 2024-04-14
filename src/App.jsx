@@ -41,11 +41,21 @@ function App() {
     // }
   }
 
+  async function clearDatabase() {
+    try {
+      await axios.get('https://can-of-books-backend-13lx.onrender.com/books/nuke');
+      // After clearing the database, fetch the updated list of books
+      getBooks();
+    } catch (error) {
+      console.error('Error clearing database:', error);
+    }
+  }
+
   return (
     <>
-      <Books handleAddBook={addBook} handleDelete={deleteBook} books={books} />
+      <Books handleAddBook={addBook} handleDelete={deleteBook} books={books} clearDatabase={clearDatabase} />
     </>
-  );
+  ); w
 }
 
 export default App;
